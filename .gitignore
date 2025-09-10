@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But keep .cpp files
+!*.cpp
+
+# (Optional) keep .gitignore itself
+!.gitignore
+.vscode
