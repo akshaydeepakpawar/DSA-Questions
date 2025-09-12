@@ -7,3 +7,4 @@
 # (Optional) keep .gitignore itself
 !.gitignore
 .vscode
+!very_imp/**/*.cpp
