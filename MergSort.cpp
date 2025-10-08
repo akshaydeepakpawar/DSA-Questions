@@ -1,31 +1,45 @@
 #include<iostream>
 using namespace std ;
-void merge(vector<int >&arr,int s,int e,int mid,vector<int >&temp)
+// void merge(vector<int >&arr,int s,int e,int mid,vector<int >&temp)
+// {
+//     int i=s,j=e,mainArrayIndex=s;
+//     while(i<=mid && j<=e)
+//     {
+//         if(arr[i]<arr[j]) temp[mainArrayIndex++]=arr[i++];
+//         else temp[mainArrayIndex++]=arr[j++];
+//     }
+//     while(i<=mid) arr[mainArrayIndex++]=arr[i++];
+//     while(j<=e) arr[mainArrayIndex++]=arr[j++];
+// }
+void inplaceMerge(vector<int >&arr,int s,int e,int mid)
 {
-    int i=s,j=e,mainArrayIndex=s;
-    while(i<=mid && j<=e)
+    int totallen=e-s+1;
+    int gap=totallen/2 + totallen%2;
+    while(gap>0)
     {
-        if(arr[i]<arr[j]) temp[mainArrayIndex++]=arr[i++];
-        else temp[mainArrayIndex++]=arr[j++];
+        int i=s,j=s+gap;
+        while(j<=e)
+        {   
+            if(arr[i]>arr[j]) swap(arr[i],arr[j]);
+            i++;j++;
+        }
+        gap= gap<=1 ? 0: gap/2 + gap%2;
     }
-    while(i<=mid) arr[mainArrayIndex++]=arr[i++];
-    while(j<=e) arr[mainArrayIndex++]=arr[j++];
 }
 
-void mergesort(vector<int >&arr,int s,int e,vector<int >&temp)
+void mergesort(vector<int >&arr,int s,int e)
 {
     if(s>=e) return ;
     int mid=s+(e-s)/2;
-    mergesort(arr,s,mid,temp);
-    mergesort(arr,mid+1,e,temp);
-    merge(arr,s,e,mid,temp);
+    mergesort(arr,s,mid);
+    mergesort(arr,mid+1,e);
+    inplaceMerge(arr,s,e,mid);
 }
 
 int main()
 {
     vector<int> arr={10,40,30,20,60,50};
-    vector<int> temp(arr.size());
-    mergesort(arr,0,arr.size()-1,temp);
+    mergesort(arr,0,arr.size()-1);
     for(int i:arr) cout<<i<<" ";
     return 0;
 }
