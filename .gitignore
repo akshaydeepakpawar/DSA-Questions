@@ -1,11 +1,14 @@
 # Ignore everything
 *
 
-# But keep all .cpp files (recursively in subfolders too)
+# But keep folders so we can see inside them
+!*/
+
+# Keep all .cpp files (in all subfolders)
 !**/*.cpp
 
 # Keep .gitignore itself
 !.gitignore
 
-# Ignore VSCode settings
+# Ignore VS Code settings
 .vscode
