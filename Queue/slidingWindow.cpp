@@ -21,7 +21,7 @@ using namespace std ;
         //process remaining
         for(int i=k;i<arr.size();i++)
         {
-            if(!q.empty() && i-q.front()>=k){
+            if(!q.empty() && q.front()<i-k+1){
                 q.pop();
             }
             if(arr[i]<0) q.push(i);
