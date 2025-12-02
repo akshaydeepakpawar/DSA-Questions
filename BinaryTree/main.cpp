@@ -82,11 +82,38 @@ void levelorderTraversal(Node *root)
         }
         else
         {
-            cout << front->data<<" ";
+            cout << front->data << " ";
             if (front->left != NULL)
                 q.push(front->left);
             if (front->right != NULL)
                 q.push(front->right);
+        }
+    }
+}
+void levelorderTraversal_R_L(Node *root)
+{
+    if (root == NULL)
+        return;
+    queue<Node *> q;
+    q.push(root);
+    q.push(NULL);
+    while (!q.empty())
+    {
+        Node *front = q.front();
+        q.pop();
+        if (front == NULL)
+        {
+            cout << endl;
+            if (!q.empty())
+                q.push(NULL);
+        }
+        else
+        {
+            cout << front->data << " ";
+            if (front->right != NULL)
+                q.push(front->right);
+            if (front->left != NULL)
+                q.push(front->left);
         }
     }
 }
@@ -103,7 +130,9 @@ int main()
     inorderTraversal(root);
     cout << "postorder Traversal : " << endl;
     postorderTraversal(root);
-    cout << "levelorder Traversal : " << endl;
+    cout << "levelorder Traversal (left to right) : " << endl;
     levelorderTraversal(root);
+    cout << "levelorder Traversal (right to left) : " << endl;
+    levelorderTraversal_R_L(root);
     return 0;
 }
