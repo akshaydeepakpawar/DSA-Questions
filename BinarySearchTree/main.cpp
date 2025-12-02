@@ -30,25 +30,19 @@ void levelOrderTraversal(Node* root){
 
 Node *buildBst(Node *root,int val){
     if(root==NULL) return new Node(val);
-    else{
-        if(root->data>val){
-            root->left=buildBst(root->left,val);
-        }
-        if(root->data<val){
-            root->right=buildBst(root->right,val);
-        }
-    }
+    if(root->data>val)  root->left=buildBst(root->left,val);
+    if(root->data<val)  root->right=buildBst(root->right,val);
     return root;
 }
 
 void createBST(Node* &root){
     cout<<"enter the values for nodes: "<<endl;
-    int val;
-    cin>>val;
-   while(val!=-1){
+    while(true){
+        int val;
+        cin >> val;
+        if (val == -1) break;
         root=buildBst(root,val);
-        cin>>val;
-   }
+    }
 }
 
 int main()
