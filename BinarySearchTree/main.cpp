@@ -11,6 +11,37 @@ public:
     }
 };
 
+
+void preorderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+    // NLR
+    cout << root->data << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
+
+void inorderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+    // LNR
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
+
+void postorderTraversal(Node *root)
+{
+    if (root == NULL)
+        return;
+    // LRN
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    cout << root->data << " ";
+}
+
 void levelOrderTraversal(Node* root){
     if(!root) return;
     queue<Node*>q;
@@ -27,6 +58,8 @@ void levelOrderTraversal(Node* root){
         cout<<endl;
     }
 }
+
+
 
 Node *buildBst(Node *root,int val){
     if(root==NULL) return new Node(val);
@@ -49,6 +82,16 @@ int main()
 {
     Node* root=NULL;
     createBST(root);
+    cout << "preorder Traversal : " << endl;
+    preorderTraversal(root);
+    cout<<endl;
+    cout << "inorder Traversal : " << endl;
+    inorderTraversal(root);
+    cout<<endl;
+    cout << "postorder Traversal : " << endl;
+    postorderTraversal(root);
+    cout<<endl;
+    cout << "levelorder Traversal : " << endl;
     levelOrderTraversal(root);
     return 0;
 }
