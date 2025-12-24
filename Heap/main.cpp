@@ -12,6 +12,7 @@ public:
 		size = 0;		// initially 0 elements in the array
 		total_size = n; // capacity of the array
 	}
+	//STEP-UP
 	void insert(int num)
 	{
 		if (size == total_size)
@@ -30,7 +31,7 @@ public:
 			index = (index - 1) / 2;
 		}
 	}
-
+	//STEP-DOWN
 	void heapify(int index)
 	{
 		int left = 2 * index + 1;
