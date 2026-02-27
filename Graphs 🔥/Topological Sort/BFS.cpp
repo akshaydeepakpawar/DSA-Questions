@@ -1,6 +1,6 @@
 class Solution
 {
-public:
+public: //khans algo
     vector<int> topoSort(int V, vector<vector<int>> &edge)
     {
 
@@ -33,8 +33,8 @@ public:
         while (!q.empty())
         {
             int frontNode = q.front();
-            ans.push_back(frontNode);
             q.pop();
+            ans.push_back(frontNode);
             for (auto node : edges[frontNode])
             {
                 indegree[node]--;
